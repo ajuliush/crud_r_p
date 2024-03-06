@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Comment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'picture','title','description','price' 
+        'product_id','comment','rating' 
     ];
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    public function product(){
+        return $this->hasMany(Product::class);
     }
 }
