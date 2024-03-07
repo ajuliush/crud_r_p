@@ -34,7 +34,7 @@ class ProductController extends Controller
                 $data['picture'] = "$name";
             }
             $this->product->createProduct($data);
-            return redirect('products');
+            return redirect('/');
     }
     public function show($id){
       $product = $this->product->getSingleProduct($id);
@@ -59,10 +59,10 @@ class ProductController extends Controller
             $data['picture'] = "$name";
         }
         $product = $this->product->updateProduct($id,$data);
-        return redirect('products');
+        return redirect('/');
       }
       public function delete($id){
         $product = $this->product->deleteProduct($id);
-        return redirect('products');
+        return redirect('/');
       }
 }
