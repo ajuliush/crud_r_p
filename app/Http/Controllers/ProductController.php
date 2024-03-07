@@ -40,4 +40,29 @@ class ProductController extends Controller
       $product = $this->product->getSingleProduct($id);
         return view('product.show',get_defined_vars());
     }
+    public function edit($id){
+      $product = $this->product->editProduct($id);
+        return view('product.edit',get_defined_vars());
+    }
+    public function update($id, Request $request){
+        $request->validate([
+            'picture' => 'required',
+            'title' => 'required',
+            'price' => 'required',
+            'description' => 'required'
+        ]);
+        $data = $request->all();
+        // picture upload
+        if( $image = $request->file('picture')){
+            $name = time().".".$image->getClientOriginalName();
+            $image->move(public_path('images'),$name);
+            $data['picture'] = "$name";
+        }
+        $product = $this->product->updateProduct($id,$data);
+        return redirect('products');
+      }
+      public function delete($id){
+        $product = $this->product->deleteProduct($id);
+        return redirect('products');
+      }
 }
