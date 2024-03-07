@@ -18,7 +18,8 @@
                         <hr>
                         <p>{{ $product->description }}</p>
                         <a href="{{ route('products.index') }}" class="btn btn-success">Go Home</a>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('product.edit',$product->id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('product.delete',$product->id) }}" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
 

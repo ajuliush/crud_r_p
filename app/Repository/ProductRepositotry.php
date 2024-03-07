@@ -21,5 +21,21 @@ class ProductRepository implements IProductRepository {
     {
         return Product::find($id);
     }
+    public function editProduct($id)
+    {
+        return Product::find($id);
+    }
+    public function updateProduct($id, array $data)
+    {
+        Product::find($id)->update([
+            'picture' => $data['picture'],
+            'title' => $data['title'],
+            'price' => $data['price'],
+            'description' => $data['description']
+        ]);
+    }
+    public function deleteProduct($id){
+        return Product::where('id', $id)->delete();
+    }
 }
 ?>
